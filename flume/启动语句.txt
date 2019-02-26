@@ -1,0 +1,8 @@
+我们写一个shell脚本来执行命令，要求就是让日志收集任务以后后台进程运行，且将运行日志重定向到 ./pgsql.log保存。
+vi pqsql.bash
+下面就是脚本内容：
+#!/bin/bash
+bin/flume-ng agent -n agent -c conf -f conf/pgsql-hdfs.conf -Dflume.root.logger=DEBUG,console >./pgsql.log 2>&1 &
+
+然后bash pgsql.bash后台运行
+tail -f 查看pgsql.log的情况
